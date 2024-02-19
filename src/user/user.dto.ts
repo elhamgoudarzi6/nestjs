@@ -1,18 +1,23 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { IsEmail, IsNotEmpty, IsNumber, IsString, MaxLength, MinLength } from "class-validator";
+
 export class UserDto {
 
     @IsString()
-    @MaxLength(30)
+    @MaxLength(11)
+    @MinLength(11)
     @IsNotEmpty()
     readonly mobile: string;
 
     @IsString()
-    @MaxLength(30)
+    @MaxLength(50)
     @IsNotEmpty()
     readonly name: string;
 
     @IsNumber()
-    @IsNotEmpty()
     readonly age: number;
 
+    @IsString()
+    @IsNotEmpty()
+    @IsEmail()
+    readonly email: string;
 }
